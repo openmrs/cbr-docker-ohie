@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y nano net-tools
 ENV OPENEMPI_VERSION=3.4.0
 ENV OPENEMPI_ARCHIVE=openempi-entity-${OPENEMPI_VERSION}c-release.tar.gz
 ENV OPENEMPI_HOME=/usr/share/openempi
+ENV OPENEMPI_DIR=openempi
 
 RUN mkdir -p ${OPENEMPI_HOME}
 WORKDIR ${OPENEMPI_HOME}
@@ -29,11 +30,11 @@ RUN mkdir -p openempi-entity-${OPENEMPI_VERSION}c/bin
 
 #The post-install script assumes this doesn't, so remove it to please it
 RUN rm -R openempi-entity-${OPENEMPI_VERSION}c/fileRepository
-ADD configure_db.sql configure_db.sql
+ADD ${OPENEMPI_DIR}/configure_db.sql configure_db.sql
 
-ADD boot.sh boot.sh
-ADD post-install.sh post-install.sh
-ADD setenv.sh bin/setenv.sh
+ADD ${OPENEMPI_DIR}/boot.sh boot.sh
+ADD ${OPENEMPI_DIR}/post-install.sh post-install.sh
+ADD ${OPENEMPI_DIR}/setenv.sh bin/setenv.sh
 RUN chmod +x boot.sh && \
     chmod +x post-install.sh && \
     chmod +x bin/setenv.sh

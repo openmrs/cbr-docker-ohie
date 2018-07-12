@@ -11,113 +11,14 @@ networks:
 
 services:
 
-    #==================== OpenCBR ====================
-    opencbr-mysql:
-        image: mysql/mysql-server:5.6
-        container_name: opencbr-mysql
-        volumes:
-            - ./opencbr/openmrs_db.sql:/docker-entrypoint-initdb.d/openmrs_db.sql
-            - ./opencbr/openmrs_db_config.sql:/docker-entrypoint-initdb.d/openmrs_db_config.sql
-        env_file:
-            - opencbr/db.env
-        ports:
-            - "3307:3306"
-        networks:
-          - opencbr-net
-    opencbr-openmrs:
-        image: tomcat:7-jre7-alpine
-        container_name: opencbr-openmrs
-        build:
-            context: .
-            dockerfile: opencbr/Dockerfile
-        depends_on:
-            - opencbr-mysql
-        volumes:
-            - ./opencbr/openmrs.war:/usr/local/tomcat/webapps/openmrs.war
-            - ./opencbr/openmrs-runtime.properties:/root/.OpenMRS/openmrs-runtime.properties
-            - ./opencbr/modules:/root/.OpenMRS/modules
-        ports:
-            - "8081:8080"
-        networks:
-            - opencbr-net
-            - opencbr-openhim-net
-
-
-    #==================== OpenHIM and the XDS mediator ==================
-    mongo:
-        container_name: openhim-mongo
-        image: mongo:3.4
-        ports:
-            - "27017:27017"
-        volumes:
-            - ./openhim/openhim_db.gz:/openhim_db.gz
-            - ./openhim/init_db.sh:/docker-entrypoint-initdb.d/init_db.sh
-        networks:
-            - openhim-core-mongo-net
-        logging:
-            driver: none
-
-    core:
-        container_name: openhim-core
-        build:
-            context: .
-            dockerfile: openhim/Dockerfile
-        env_file:
-            - openhim/db.env
-        volumes:
-            - ./openhim/openhim-core-config.json:/usr/src/app/config/default.json
-        ports:
-            - "5000:5000"
-            - "5001:5001"
-            - "5002:5002"
-            - "5050:5050"
-            - "5051:5051"
-            - "5053:5053"
-            - "7788:7788"
-        depends_on:
-            - mongo
-        networks:
-            - opencbr-openhim-net
-            - openhim-core-mongo-net
-            - openhim-console-core-net
-            - openhim-mediator-openempi-net
-
-    console:
-        container_name: openhim-console
-        image: jembi/openhim-console
-        ports:
-            - "80:80"
-        volumes:
-            - ./openhim/console-config.json:/usr/share/nginx/html/config/default.json
-        depends_on:
-            - core
-        networks:
-            - openhim-console-core-net
-
-
-    #==================== OpenEMPI ==================
-    openempi:
-        build:
-            context: .
-            dockerfile: openempi/Dockerfile
-        container_name: openempi
-        ports:
-            - "8082:8080"
-            - "3600:3600"
-        stdin_open: true
-        tty: true
-        networks:
-            - openhim-mediator-openempi-net
-
-
-    #==================== OpenSHR ==================
+#==================== OpenSHR ==================
     openshr-mysql:
         image: mysql/mysql-server:5.6
         container_name: openshr-mysql
         env_file:
             - openshr/db.env
         volumes:
-            - ./openshr/openshropenmrs_db.sql:/docker-entrypoint-initdb.d/openmrs_db.sql
+            - ./openshr/openmrs_db.sql:/docker-entrypoint-initdb.d/openmrs_db.sql
             - ./openshr/openmrs_db_config.sql:/docker-entrypoint-initdb.d/openmrs_db_config.sql
         ports:
             - "3308:3306"

@@ -2,7 +2,7 @@
   "version": "1.10.0",
   "minimumCoreVersion": "3.4.0",
   "protocol": "https",
-  "host": "openhim-core",
+  "host": "localhost",
   "port": 5002,
   "title": "Admin Console For CBR",
   "footerTitle": "OpenHIM Administration Console For CBR",

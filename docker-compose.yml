@@ -67,7 +67,7 @@ services:
         env_file:
             - openhim/db.env
         volumes:
-            - ./openhim/openhim-core-config.json:/usr/src/app/config/default.json
+            - ./openhim/core-config.json:/usr/src/app/config/default.json
         ports:
             - "5000:5000"
             - "5001:5001"

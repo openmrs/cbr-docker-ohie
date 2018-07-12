@@ -77,7 +77,7 @@ services:
             - "5053:5053"
             - "7788:7788"
         depends_on:
-            - mongo
+            - openhim-mongo
         networks:
             - opencbr-openhim-net
             - openhim-core-mongo-net
@@ -92,7 +92,7 @@ services:
         volumes:
             - ./openhim/console-config.json:/usr/share/nginx/html/config/default.json
         depends_on:
-            - core
+            - openhim-core
         networks:
             - openhim-console-core-net
 

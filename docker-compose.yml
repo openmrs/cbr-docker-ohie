@@ -46,7 +46,7 @@ services:
 
 
     #==================== OpenHIM and the XDS mediator ==================
-    openhim-mongo:
+    mongo:
         container_name: openhim-mongo
         image: mongo:3.4
         ports:
@@ -59,7 +59,7 @@ services:
         logging:
             driver: none
 
-    openhim-core:
+    core:
         container_name: openhim-core
         build:
             context: .
@@ -84,7 +84,7 @@ services:
             - openhim-console-core-net
             - openhim-mediator-openempi-net
 
-    openhim-console:
+    console:
         container_name: openhim-console
         image: jembi/openhim-console
         ports:

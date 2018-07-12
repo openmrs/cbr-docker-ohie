@@ -1,6 +1,7 @@
 version: "3.3"
 
 networks:
+
     opencbr-openhim-net:
     opencbr-net:
     openhim-core-mongo-net:
@@ -8,6 +9,7 @@ networks:
     openhim-mediator-openempi-net:
     openshr-openmrs-mysql-net:
     openshr-openxds-postgres-net:
+    dhis2-postgres-net:
 
 services:
 
@@ -153,3 +155,32 @@ services:
             - openshr-postgres
         networks:
             - openshr-openxds-postgres-net
+
+
+    #==================== DHIS2 ==================
+    dhis2-postgres:
+        image: postgres:9.6
+        container_name: dhis2-postgres
+        env_file:
+            - dhis2/db.env
+        volumes:
+            - ./dhis2/database_schema.sql:/docker-entrypoint-initdb.d/database_schema.sql
+            - ./dhis2/db_data.sql:/docker-entrypoint-initdb.d/db_data.sql
+        networks:
+            - dhis2-postgres-net
+
+    dhis2:
+        image: dhis2/dhis2-web:2.29-tomcat7-jre8-latest
+        container_name: dhis2
+        env_file:
+            - dhis2/db.env
+        volumes:
+            - ./dhis2/dhis.conf:/usr/share/dhis2/dhis.conf
+            - ./dhis2/setenv.sh:/usr/local/tomcat/bin/setenv.sh
+            - ./dhis2/server.xml:/usr/local/tomcat/conf/server.xml
+        ports:
+            - "8084:8080"
+        depends_on:
+            - dhis2-postgres
+        networks:
+            - dhis2-postgres-net

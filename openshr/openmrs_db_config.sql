@@ -14,11 +14,11 @@ VALUES
   (@LOCATION_ID, @EXT_ID_ATTRIB_TYPE_ID, 'DEMO^^^&2.16.840.1.113883.3.7194.1.100&ISO', 1, '2018-07-02 00:00:00', UUID());
 
 UPDATE global_property
-SET property_value = 'http://host.docker.internal:8010/axis2/services/xdsregistryb'
+SET property_value = 'http://openshr-openxds:8010/axis2/services/xdsregistryb'
 WHERE property = 'xds-b-repository.xdsregistry.url';
 
 UPDATE global_property
-SET property_value = 'http://host.docker.internal:8084'
+SET property_value = 'http://dhis2:8084'
 WHERE property = 'dhis2tracker.dhis2Url';
 
 UPDATE global_property

@@ -1,11 +1,16 @@
 version: "3.3"
+
 networks:
     opencbr-openhim-net:
     opencbr-net:
     openhim-core-mongo-net:
     openhim-console-core-net:
     openhim-mediator-openempi-net:
+    openshr-openmrs-mysql-net:
+    openshr-openxds-postgres-net:
+
 services:
+
     #==================== OpenCBR ====================
     opencbr-mysql:
         image: mysql/mysql-server:5.6
@@ -103,3 +108,48 @@ services:
         tty: true
         networks:
             - openhim-mediator-openempi-net
+
+
+    #==================== OpenSHR ==================
+    openshr-mysql:
+        image: mysql/mysql-server:5.6
+        container_name: openshr-mysql
+        env_file:
+            - openshr/db.env
+        volumes:
+            - ./openshr/openshropenmrs_db.sql:/docker-entrypoint-initdb.d/openmrs_db.sql
+            - ./openshr/openmrs_db_config.sql:/docker-entrypoint-initdb.d/openmrs_db_config.sql
+        ports:
+            - "3308:3306"
+        networks:
+          - openshr-openmrs-mysql-net
+    openshr-postgres:
+        image: postgres:9.6
+        container_name: postgresql-openxds
+        networks:
+            - openshr-openxds-postgres-net
+    openshr-openmrs:
+        image: tomcat:7.0-jre7-alpine
+        container_name: openshr-openmrs
+        depends_on:
+            - openshr-mysql
+        volumes:
+            - ./openshr/openmrs.war:/usr/local/tomcat/webapps/openmrs.war
+            - ./openshr/openmrs-runtime.properties:/root/.OpenMRS/openmrs-runtime.properties
+            - ./openshr/modules:/root/.OpenMRS/modules
+        ports:
+            - "8083:8080"
+        networks:
+            - openshr-openmrs-mysql-net
+    openshr-openxds:
+        image: uwitech/openxds
+        container_name: openshr-openxds
+        volumes:
+            - ./openshr/XdsCodes.xml:/opt/openxds/conf/actors/XdsCodes.xml
+        ports:
+            - "8010:8010"
+            - "8020:8020"
+        depends_on:
+            - openshr-postgres
+        networks:
+            - openshr-openxds-postgres-net

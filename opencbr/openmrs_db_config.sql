@@ -13,7 +13,7 @@ VALUES
   documents, MUST be an OID, please refer to the module documentation for the constraints around the allowed values.', UUID()),
   ('casereport.organisationExtension', 'DEMO', 'Extension of the entity that submits case report documents', UUID()),
   ('casereport.organisationName', 'Demo', 'Name of the entity that submits case report documents', UUID()),
-  ('casereport.openHIMUrl', 'http://host.docker.internal:5001/xdsrepository', 'The URL to the OpenHIM server, typically
+  ('casereport.openHIMUrl', 'http://openhim-core:5001/xdsrepository', 'The URL to the OpenHIM server, typically
   the path should match the URL pattern of the channel for the OpenXDS mediator', UUID()),
   ('casereport.openHIMClientId', 'OpenCBR', 'The OpenHIM client Id, to be set if basic authentication is required, the
   client must have access to the OpenXDS mediator', UUID()),

@@ -4,6 +4,7 @@ RUN apt-get update && \
     apt-get install -y curl openjdk-7-jre
 
 ENV JAVA_HOME "/usr/lib/jvm/java-7-openjdk-amd64"
+ENV OPENHIM_DIR=openhim
 
 # Install dockerize
 ENV DOCKERIZE_VERSION="v0.2.0"
@@ -20,15 +21,15 @@ RUN mkdir -p "${MEDIATOR_HOME}" \
     && tar -zxvf ${MEDIATOR_FILE} -C ${MEDIATOR_HOME} --strip-components=1 \
     && rm ${MEDIATOR_FILE}
 
-ADD xds-mediator.properties ${MEDIATOR_HOME}/xds-mediator.properties
-ADD openhim.crt ${MEDIATOR_HOME}/openhim.crt
+ADD ${OPENHIM_DIR}/xds-mediator.properties ${MEDIATOR_HOME}/xds-mediator.properties
+ADD ${OPENHIM_DIR}/openhim.crt ${MEDIATOR_HOME}/openhim.crt
 RUN keytool -storepass changeit -import -noprompt -trustcacerts -alias openhim -file ${MEDIATOR_HOME}/openhim.crt -keystore $JAVA_HOME/jre/lib/security/cacerts
 
-ADD boot.sh boot.sh
+ADD ${OPENHIM_DIR}/boot.sh boot.sh
 RUN chmod +x boot.sh
-ADD start-openhim.sh start-openhim.sh
+ADD ${OPENHIM_DIR}/start-openhim.sh start-openhim.sh
 RUN chmod +x start-openhim.sh
-ADD start-mediator.sh ${MEDIATOR_HOME}/start-mediator.sh
+ADD ${OPENHIM_DIR}/start-mediator.sh ${MEDIATOR_HOME}/start-mediator.sh
 RUN chmod +x ${MEDIATOR_HOME}/start-mediator.sh
 
 CMD ["/bin/bash", "boot.sh"]

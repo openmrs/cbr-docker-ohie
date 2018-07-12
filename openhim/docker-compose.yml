@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+    mongo:
+        container_name: openhim-mongo
+        image: mongo:3.4
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./openhim_db.gz:/openhim_db.gz
+            - ./init_db.sh:/docker-entrypoint-initdb.d/init_db.sh
+        logging:
+          driver: none
+
+    core:
+        container_name: openhim-core
+        build:
+            context: .
+            dockerfile: Dockerfile
+        env_file:
+            - db.env
+        volumes:
+            - ./openhim-core-config.json:/usr/src/app/config/default.json
+        ports:
+            - "5000:5000"
+            - "5001:5001"
+            - "5002:5002"
+            - "5050:5050"
+            - "5051:5051"
+            - "5053:5053"
+            - "7788:7788"
+        depends_on:
+            - mongo
+
+    console:
+        container_name: openhim-console
+        image: jembi/openhim-console
+        ports:
+            - "80:80"
+        volumes:
+            - ./console-config.json:/usr/share/nginx/html/config/default.json
+        depends_on:
+            - core

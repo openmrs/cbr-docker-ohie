@@ -10,6 +10,7 @@ networks:
     openhim-mediator-openshr-net:
     openshr-openmrs-mysql-net:
     openshr-openxds-postgres-net:
+    openshr-openmrs-dhis2-net:
     dhis2-postgres-net:
 
 services:
@@ -127,11 +128,13 @@ services:
             - "3308:3306"
         networks:
           - openshr-openmrs-mysql-net
+          
     openshr-postgres:
         image: postgres:9.6
         container_name: postgresql-openxds
         networks:
             - openshr-openxds-postgres-net
+
     openshr-openmrs:
         image: tomcat:7.0-jre7-alpine
         container_name: openshr-openmrs
@@ -146,6 +149,8 @@ services:
         networks:
             - openshr-openmrs-mysql-net
             - openhim-mediator-openshr-net
+            - openshr-openmrs-dhis2-net
+            
     openshr-openxds:
         image: uwitech/openxds
         container_name: openshr-openxds
@@ -187,3 +192,4 @@ services:
             - dhis2-postgres
         networks:
             - dhis2-postgres-net
+            - openshr-openmrs-dhis2-net

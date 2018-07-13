@@ -5,6 +5,8 @@ set -e
 #Start openhim-core using dockerize so that we can wait for mongodb to be ready
 dockerize -wait tcp://openhim-mongo:27017 -timeout 60s ./start-openhim.sh run &
 
+sleep 15
+
 echo "Starting XDS mediator..."
 
 cd mediator

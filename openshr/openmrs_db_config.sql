@@ -18,7 +18,7 @@ SET property_value = 'http://openshr-openxds:8010/axis2/services/xdsregistryb'
 WHERE property = 'xds-b-repository.xdsregistry.url';
 
 UPDATE global_property
-SET property_value = 'http://dhis2:8084'
+SET property_value = 'http://dhis2:8080'
 WHERE property = 'dhis2tracker.dhis2Url';
 
 UPDATE global_property

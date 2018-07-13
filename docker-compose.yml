@@ -7,6 +7,7 @@ networks:
     openhim-core-mongo-net:
     openhim-console-core-net:
     openhim-mediator-openempi-net:
+    openhim-mediator-openshr-net:
     openshr-openmrs-mysql-net:
     openshr-openxds-postgres-net:
     dhis2-postgres-net:
@@ -83,6 +84,7 @@ services:
             - openhim-core-mongo-net
             - openhim-console-core-net
             - openhim-mediator-openempi-net
+            - openhim-mediator-openshr-net
 
     openhim-console:
         container_name: openhim-console
@@ -143,6 +145,7 @@ services:
             - "8083:8080"
         networks:
             - openshr-openmrs-mysql-net
+            - openhim-mediator-openshr-net
     openshr-openxds:
         image: uwitech/openxds
         container_name: openshr-openxds

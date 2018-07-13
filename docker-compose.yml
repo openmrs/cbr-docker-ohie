@@ -10,6 +10,7 @@ networks:
     openhim-mediator-openshr-openmrs-net:
     openshr-openmrs-mysql-net:
     openshr-openxds-postgres-net:
+    openshr-openmrs-openxds-net:
     openshr-openmrs-dhis2-net:
     dhis2-postgres-net:
 
@@ -37,6 +38,7 @@ services:
         depends_on:
             - opencbr-mysql
         volumes:
+            - ./opencbr/setenv.sh:/usr/local/tomcat/bin/setenv.sh
             - ./opencbr/openmrs.war:/usr/local/tomcat/webapps/openmrs.war
             - ./opencbr/openmrs-runtime.properties:/root/.OpenMRS/openmrs-runtime.properties
             - ./opencbr/modules:/root/.OpenMRS/modules
@@ -149,6 +151,7 @@ services:
         networks:
             - openshr-openmrs-mysql-net
             - openhim-mediator-openshr-openmrs-net
+            - openshr-openmrs-openxds-net
             - openshr-openmrs-dhis2-net
             
     openshr-openxds:
@@ -163,6 +166,7 @@ services:
             - openshr-postgres
         networks:
             - openshr-openxds-postgres-net
+            - openshr-openmrs-openxds-net
 
 
     #==================== DHIS2 ==================

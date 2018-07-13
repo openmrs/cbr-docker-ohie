@@ -1,5 +1,5 @@
 # cbr-docker-ohie
-Dockerization of all the OpenMRS instance hosting the case reports module, 
+Dockerization of the OpenMRS instance hosting the case reports module, 
 DHIS2 and the OpenHIE components required for case base surveillance.
 
 #### Requirements

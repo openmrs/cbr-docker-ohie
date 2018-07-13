@@ -64,7 +64,7 @@ services:
             driver: none
 
     openhim-core:
-        container_name: openhim-core
+    #    container_name: openhim-core
         build:
             context: .
             dockerfile: openhim/Dockerfile
@@ -104,10 +104,10 @@ services:
 
     #==================== OpenEMPI ==================
     openempi:
+        container_name: openempi
         build:
             context: .
             dockerfile: openempi/Dockerfile
-        container_name: openempi
         ports:
             - "8082:8080"
             - "3600:3600"

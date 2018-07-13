@@ -64,7 +64,7 @@ services:
             driver: none
 
     openhim-core:
-    #    container_name: openhim-core
+        container_name: openhim-core
         build:
             context: .
             dockerfile: openhim/Dockerfile

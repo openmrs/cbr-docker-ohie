@@ -4,9 +4,7 @@ DHIS2 and the OpenHIE components required for case based surveillance.
 
 #### Requirements
 - Ubuntu Trusty 14.04
-
 - Docker 18.03
-
 - Git
 
 #### Install Docker

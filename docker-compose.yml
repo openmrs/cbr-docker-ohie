@@ -8,6 +8,7 @@ networks:
     openhim-console-core-net:
     openhim-mediator-openempi-net:
     openhim-mediator-openshr-openmrs-net:
+    openempi-postgres-net:
     openshr-openmrs-mysql-net:
     openshr-openxds-postgres-net:
     openshr-openmrs-openxds-net:
@@ -103,18 +104,31 @@ services:
 
 
     #==================== OpenEMPI ==================
+    openempi-postgres:
+        image: postgres:9.6
+        container_name: openempi-postgres
+        env_file:
+            - openempi/db.env
+        #volumes:
+        #    - ./openempi/configure_db.sql:/docker-entrypoint-initdb.d/configure_db.sql
+        networks:
+            - openempi-postgres-net
+
     openempi:
+        image: openempi
         container_name: openempi
-        build:
-            context: .
-            dockerfile: openempi/Dockerfile
+        env_file:
+            - openempi/db.env
+        volumes:
+            - ./openempi/jdbc.properties:/usr/share/openempi/openempi-entity-3.4.0c/conf/jdbc.properties
         ports:
             - "8082:8080"
             - "3600:3600"
-        stdin_open: true
-        tty: true
         networks:
             - openhim-mediator-openempi-net
+            - openempi-postgres-net
+        stdin_open: true
+        tty: true
 
 
     #==================== OpenSHR ==================

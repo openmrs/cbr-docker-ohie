@@ -112,8 +112,8 @@ services:
             - openempi-postgres-net
 
     openempi:
-        image: openempi
-        container_name: wluyima/openempi
+        image: wluyima/openempi
+        container_name: openempi
         env_file:
             - openempi/db.env
         volumes:

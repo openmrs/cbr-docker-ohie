@@ -114,7 +114,7 @@ services:
 
     openempi:
         image: openempi
-        container_name: openempi
+        container_name: wluyima/openempi
         env_file:
             - openempi/db.env
         volumes:

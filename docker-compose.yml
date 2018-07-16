@@ -109,8 +109,6 @@ services:
         container_name: openempi-postgres
         env_file:
             - openempi/db.env
-        #volumes:
-        #    - ./openempi/configure_db.sql:/docker-entrypoint-initdb.d/configure_db.sql
         networks:
             - openempi-postgres-net
 
@@ -120,7 +118,7 @@ services:
         env_file:
             - openempi/db.env
         volumes:
-            - ./openempi/jdbc.properties:/usr/share/openempi/openempi-entity-3.4.0c/conf/jdbc.properties
+            - ./openempi/configure_db.sql:/usr/share/openempi/configure_db.sql
         ports:
             - "8082:8080"
             - "3600:3600"

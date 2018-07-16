@@ -65,14 +65,13 @@ services:
             driver: none
 
     openhim-core:
+        image: wluyima/openhim-core
         container_name: openhim-core
-        build:
-            context: .
-            dockerfile: openhim/Dockerfile
         env_file:
             - openhim/db.env
         volumes:
             - ./openhim/core-config.json:/usr/src/app/config/default.json
+            - ./openhim/xds-mediator.properties:/usr/src/app/mediator/xds-mediator.properties
         ports:
             - "5000:5000"
             - "5001:5001"

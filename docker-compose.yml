@@ -1,9 +1,9 @@
 version: "3.3"
 
 networks:
-
+    
+    opencbr-mysql-net:
     opencbr-openhim-net:
-    opencbr-net:
     openhim-core-mongo-net:
     openhim-console-core-net:
     openhim-mediator-openempi-net:
@@ -29,7 +29,7 @@ services:
         ports:
             - "3307:3306"
         networks:
-          - opencbr-net
+          - opencbr-mysql-net
     opencbr-openmrs:
         image: tomcat:7-jre7-alpine
         container_name: opencbr-openmrs
@@ -43,7 +43,7 @@ services:
         ports:
             - "8081:8080"
         networks:
-            - opencbr-net
+            - opencbr-mysql-net
             - opencbr-openhim-net
 
 

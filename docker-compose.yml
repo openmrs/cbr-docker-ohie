@@ -142,7 +142,7 @@ services:
         networks:
           - openshr-openmrs-mysql-net
           
-    openshr-postgres:
+    postgresql-openxds:
         image: postgres:9.6
         container_name: postgresql-openxds
         networks:
@@ -174,7 +174,7 @@ services:
             - "8010:8010"
             - "8020:8020"
         depends_on:
-            - openshr-postgres
+            - postgresql-openxds
         networks:
             - openshr-openxds-postgres-net
             - openshr-openmrs-openxds-net

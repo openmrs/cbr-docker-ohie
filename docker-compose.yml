@@ -1,20 +1,5 @@
 version: "3.3"
 
-networks:
-    
-    opencbr-mysql-net:
-    opencbr-openhim-net:
-    openhim-core-mongo-net:
-    openhim-console-core-net:
-    openhim-mediator-openempi-net:
-    openhim-mediator-openshr-openmrs-net:
-    openempi-postgres-net:
-    openshr-openmrs-mysql-net:
-    openshr-openxds-postgres-net:
-    openshr-openmrs-openxds-net:
-    openshr-openmrs-dhis2-net:
-    dhis2-postgres-net:
-
 services:
 
     #==================== OpenCBR ====================
@@ -26,8 +11,7 @@ services:
         volumes:
             - ./opencbr/openmrs_db.sql:/docker-entrypoint-initdb.d/openmrs_db.sql
             - ./opencbr/openmrs_db_config.sql:/docker-entrypoint-initdb.d/openmrs_db_config.sql
-        networks:
-          - opencbr-mysql-net
+
     opencbr-openmrs:
         image: tomcat:7-jre7-alpine
         container_name: opencbr-openmrs
@@ -40,9 +24,6 @@ services:
             - ./opencbr/modules:/root/.OpenMRS/modules
         ports:
             - "8081:8080"
-        networks:
-            - opencbr-mysql-net
-            - opencbr-openhim-net
 
 
     #==================== OpenHIM and the XDS mediator ==================
@@ -54,8 +35,6 @@ services:
         volumes:
             - ./openhim/openhim_db.gz:/openhim_db.gz
             - ./openhim/init_db.sh:/docker-entrypoint-initdb.d/init_db.sh
-        networks:
-            - openhim-core-mongo-net
         logging:
             driver: none
 
@@ -77,12 +56,6 @@ services:
             - "7788:7788"
         depends_on:
             - mongo
-        networks:
-            - opencbr-openhim-net
-            - openhim-core-mongo-net
-            - openhim-console-core-net
-            - openhim-mediator-openempi-net
-            - openhim-mediator-openshr-openmrs-net
 
     openhim-console:
         container_name: openhim-console
@@ -93,8 +66,6 @@ services:
             - ./openhim/console-config.json:/usr/share/nginx/html/config/default.json
         depends_on:
             - openhim-core
-        networks:
-            - openhim-console-core-net
 
 
     #==================== OpenEMPI ==================
@@ -103,8 +74,6 @@ services:
         container_name: openempi-postgres
         env_file:
             - openempi/db.env
-        networks:
-            - openempi-postgres-net
 
     openempi:
         image: wluyima/openempi
@@ -116,9 +85,6 @@ services:
         ports:
             - "8082:8080"
             - "3600:3600"
-        networks:
-            - openhim-mediator-openempi-net
-            - openempi-postgres-net
         stdin_open: true
         tty: true
 
@@ -132,14 +98,10 @@ services:
         volumes:
             - ./openshr/openmrs_db.sql:/docker-entrypoint-initdb.d/openmrs_db.sql
             - ./openshr/openmrs_db_config.sql:/docker-entrypoint-initdb.d/openmrs_db_config.sql
-        networks:
-          - openshr-openmrs-mysql-net
           
     postgresql-openxds:
         image: postgres:9.6
         container_name: postgresql-openxds
-        networks:
-            - openshr-openxds-postgres-net
 
     openshr-openmrs:
         image: tomcat:7.0-jre7-alpine
@@ -152,11 +114,6 @@ services:
             - ./openshr/modules:/root/.OpenMRS/modules
         ports:
             - "8083:8080"
-        networks:
-            - openshr-openmrs-mysql-net
-            - openhim-mediator-openshr-openmrs-net
-            - openshr-openmrs-openxds-net
-            - openshr-openmrs-dhis2-net
             
     openshr-openxds:
         image: uwitech/openxds
@@ -168,9 +125,6 @@ services:
             - "8020:8020"
         depends_on:
             - postgresql-openxds
-        networks:
-            - openshr-openxds-postgres-net
-            - openshr-openmrs-openxds-net
 
 
     #==================== DHIS2 ==================
@@ -182,8 +136,6 @@ services:
         volumes:
             - ./dhis2/database_schema.sql:/docker-entrypoint-initdb.d/database_schema.sql
             - ./dhis2/db_data.sql:/docker-entrypoint-initdb.d/db_data.sql
-        networks:
-            - dhis2-postgres-net
 
     dhis2:
         image: dhis2/dhis2-web:2.29-tomcat7-jre8-latest
@@ -198,6 +150,3 @@ services:
             - "8084:8080"
         depends_on:
             - dhis2-postgres
-        networks:
-            - dhis2-postgres-net
-            - openshr-openmrs-dhis2-net

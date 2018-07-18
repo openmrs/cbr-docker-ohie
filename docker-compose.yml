@@ -33,9 +33,6 @@ services:
     opencbr-openmrs:
         image: tomcat:7-jre7-alpine
         container_name: opencbr-openmrs
-        build:
-            context: .
-            dockerfile: opencbr/Dockerfile
         depends_on:
             - opencbr-mysql
         volumes:

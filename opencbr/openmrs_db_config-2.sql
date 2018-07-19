@@ -9,10 +9,10 @@ SET @ID_MAPPINGS = CONCAT_WS(',', @OLD_ID_MAP, @OPENMRS_IDENTFIER_ID_MAP, @OPENM
 
 INSERT INTO global_property (property, property_value, description, uuid)
 VALUES
-  ('casereport.organisationOID', '2.16.840.1.113883.3.7194.1.100', 'Identifier of the entity that submits case report
+  ('casereport.organisationOID', '2.16.840.1.113883.3.7194.1.102', 'Identifier of the entity that submits case report
   documents, MUST be an OID, please refer to the module documentation for the constraints around the allowed values.', UUID()),
-  ('casereport.organisationExtension', 'DEMO', 'Extension of the entity that submits case report documents', UUID()),
-  ('casereport.organisationName', 'Demo', 'Name of the entity that submits case report documents', UUID()),
+  ('casereport.organisationExtension', 'DEMO2', 'Extension of the entity that submits case report documents', UUID()),
+  ('casereport.organisationName', 'Demo 2', 'Name of the entity that submits case report documents', UUID()),
   ('casereport.openHIMUrl', 'http://openhim-core:5001/xdsrepository', 'The URL to the OpenHIM server, typically
   the path should match the URL pattern of the channel for the OpenXDS mediator', UUID()),
   ('casereport.openHIMClientId', 'OpenCBR', 'The OpenHIM client Id, to be set if basic authentication is required, the

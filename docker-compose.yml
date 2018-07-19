@@ -27,8 +27,6 @@ services:
     #==================== OpenHIM and the XDS mediator ==================
     mongo:
         image: mongo:3.4
-        ports:
-            - "27017:27017"
         volumes:
             - ./openhim/openhim_db.gz:/openhim_db.gz
             - ./openhim/init_db.sh:/docker-entrypoint-initdb.d/init_db.sh

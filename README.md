@@ -1,5 +1,5 @@
 # cbr-docker-ohie
-Dockerization of the OpenMRS instances hosting the casereport module,
+Dockerization of 2 OpenMRS instances hosting the casereport module,
 DHIS2, OpenHIM, OpenEMPI, OpenSHR and DHIS2 for case based surveillance.
 
 #### Requirements
@@ -7,10 +7,8 @@ DHIS2, OpenHIM, OpenEMPI, OpenSHR and DHIS2 for case based surveillance.
 - Git
 
 #### Install Docker
-Install docker for Ubuntu Trusty 14.04 following the instructions 
-[here](https://docs.docker.com/install/linux/docker-ce/ubuntu/), 
-make sure under the section labeled **EXTRA STEPS FOR AUFS** 
-you select the Trusty 14.04 tab. It's recommended to use the **Install using the repository** option rather than from packages.
+Install docker for your OS platform following the instructions
+[here](https://docs.docker.com/install/#supported-platforms).
 
 #### Install git
 Your Ubuntu installation should come with git already pre installed, if not, 
@@ -29,20 +27,30 @@ then run the command below to import the project
 git clone https://github.com/wluyima/cbr-docker-ohie.git
 ```
 
-#### Running the ecosystem
-In the terminal, navigate to the directory you just created above and
+#### Startup
+From the commandline, navigate to the directory you just created above and
 execute the command below
 
 ```
 docker stack deploy -c docker-compose.yml cbr
 ```
 
+
+#### Shutdown
+From the commandline, navigate to the directory you just created above and
+execute the command below, note that the command resets all the systems
+which would lead to loss of all data in the databases.
+
+```
+docker stack rm cbr
+```
+
 #### Accessing the systems
 If you have installed the ecosystem on a remote machine, you will need to
 replace **localhost** in the URLs below with the IP address of the machine.
-If you plan to access the OpenHIM instance, you will need to edit the file named
-**console-config.json** inside the **openhim** folder and set the host
-field to the IP address of the remote machine.
+If you plan to access the OpenHIM instance, you will need to edit the file
+named **console-config.json** inside the **openhim** folder and set the
+value of the **host** field to the IP address of the remote machine.
 
 Below are URLs to visit to access each system,
 
@@ -58,16 +66,6 @@ DHIS2 - http://localhost:8084
 
 OpenHIM - http://localhost
 
-#### Shutting down the ecosystem
-In the terminal, navigate to the directory you just created above and
-execute the command below, note that the command resets all the systems
-which would lead to loss of all data in the databases.
-
-```
-docker stack rm cbr
-```
-
-
 #### Testing the ecosystem
 
 After successfully installing the ecosystem, you should be able to visit
@@ -76,7 +74,7 @@ register a new patient, add a **New HIV Case** report item for the patient
 and then submit it.
 
 The patient should automatically get enrolled in the **HIV surveillance Program**
-in the DHIS2 instance at http://localhost:8084, you will need to go to the tracker
-capture app and select the org unit mapped to the OpenMRS instance from which you
-submitted the case report.
+in the DHIS2 instance at http://localhost:8084. To view the enrollment, you will
+need to go to the tracker capture app and select the org unit mapped to the
+OpenMRS instance from which you submitted the case report.
  

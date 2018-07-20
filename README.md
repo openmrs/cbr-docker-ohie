@@ -51,7 +51,7 @@ If you plan to access the OpenHIM instance, you will need to edit the file
 named **console-config.json** inside the **openhim** folder and set the
 value of the **host** field to the IP address of the remote machine.
 
-Below are URLs to visit to access each system,
+Below are URLs to visit to access each instance,
 
 OpenMRS Instance 1 - http://localhost:8080/openmrs
 

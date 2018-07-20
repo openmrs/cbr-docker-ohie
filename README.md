@@ -1,10 +1,9 @@
 # cbr-docker-ohie
-Dockerization of the OpenMRS instance hosting the casereport module, 
-DHIS2 and the OpenHIE components required for case based surveillance.
+Dockerization of the OpenMRS instances hosting the casereport module,
+DHIS2, OpenHIM, OpenEMPI, OpenSHR and DHIS2 for case based surveillance.
 
 #### Requirements
-- Ubuntu Trusty 14.04
-- Docker 18.03
+- Docker 17+
 - Git
 
 #### Install Docker
@@ -22,5 +21,29 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
+#### Import the project
+Create a new directory where to import to the code, switch to the new directory and
+then run the command below to import the project
+
+```
+git clone https://github.com/wluyima/cbr-docker-ohie.git
+```
+
+#### Run the ecosystem
+In the terminal, navigate to the directory you just created above and
+execute the command below
+
+```
+docker stack deploy -c docker-compose.yml cbr
+```
+
+#### Shutdown the ecosystem
+In the terminal, navigate to the directory you just created above and
+execute the command below, note that the command resets all the systems which would
+lead to loss of all data in the databases.
+
+```
+docker stack rm cbr
+```
 
  

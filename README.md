@@ -2,15 +2,15 @@
 Dockerization of 2 OpenMRS instances hosting the casereport module,
 DHIS2, OpenHIM, OpenEMPI, OpenSHR and DHIS2 for case based surveillance.
 
-#### Requirements
+##### Requirements
 - Docker 17+
 - Git
 
-#### Install Docker
+##### Install Docker
 Install docker for your platform following the instructions
 [here](https://docs.docker.com/install/#supported-platforms).
 
-#### Install git
+##### Install git
 Your Ubuntu installation should come with git already pre installed, if not, 
 run the commands below to install it
 
@@ -19,7 +19,7 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
-#### Import the project
+##### Import the project
 Create a new directory where to import to the code, switch to the new directory and
 then run the command below to import the project
 
@@ -27,7 +27,7 @@ then run the command below to import the project
 git clone https://github.com/wluyima/cbr-docker-ohie.git
 ```
 
-#### Startup
+##### Startup
 From the commandline, navigate to the directory you just created above and
 execute the command below
 
@@ -35,8 +35,7 @@ execute the command below
 docker stack deploy -c docker-compose.yml cbr
 ```
 
-
-#### Shutdown (Resetting)
+##### Shutdown (Resetting)
 From the commandline, navigate to the directory you just created above and
 execute the command below, note that the command resets all the systems
 which would lead to loss of all data in the databases.
@@ -45,7 +44,7 @@ which would lead to loss of all data in the databases.
 docker stack rm cbr
 ```
 
-#### Accessing the systems
+##### Accessing the systems
 If you have installed the ecosystem on a remote machine, you will need to
 replace **localhost** in the URLs below with the IP address of the machine.
 If you plan to access the OpenHIM instance, you will need to edit the file
@@ -66,7 +65,7 @@ DHIS2 - http://localhost:8084
 
 OpenHIM - http://localhost
 
-#### Testing the ecosystem
+##### Testing the ecosystem
 
 After successfully installing the ecosystem, you should be able to visit
 any of the OpenMRS instances (http://localhost:8080/openmrs or http://localhost:8081/openmrs),

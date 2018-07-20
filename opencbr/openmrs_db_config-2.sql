@@ -21,3 +21,5 @@ VALUES
   ('casereport.identifierTypeMappings', @ID_MAPPINGS, 'A comma separated list of mappings between local identifier types
   to those in the Client Registry, the values are local identifier type uuids and the unique OIDs of the identifiers in
   the client registry, an example mapping is 2f470aa8-1d73-43b7-81b5-01f0c0dfa53c:2.16.840.1.113883.1.3', UUID());
+
+UPDATE idgen_seq_id_gen SET first_identifier_base = '20000' WHERE id = 1;

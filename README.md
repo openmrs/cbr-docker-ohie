@@ -1,6 +1,6 @@
 # cbr-docker-ohie
-Dockerization of 2 OpenMRS instances hosting the casereport module,
-DHIS2, OpenHIM, OpenEMPI, OpenSHR and DHIS2 for case based surveillance.
+Dockerization of OpenHIM, OpenEMPI, OpenSHR, DHIS2 and 2 OpenMRS instances
+each hosting the case report module to demonstrate case based surveillance.
 
 ### Requirements
 - Docker 17+

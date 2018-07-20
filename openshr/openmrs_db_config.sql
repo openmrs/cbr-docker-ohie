@@ -3,15 +3,21 @@ WHERE uuid = '66bfca6e-75af-11e8-a395-ec86dab4f7b9';
 SELECT location_attribute_type_id INTO @EXT_ID_ATTRIB_TYPE_ID FROM location_attribute_type
 WHERE uuid = 'c54ee8f6-75b6-11e8-a395-ec86dab4f7b9';
 
-SET @LOCATION_ID = 2;
+SET @LOCATION_ID_1 = 2;
+SET @LOCATION_ID_2 = 3;
 
 INSERT INTO location(name, description, creator, date_created, uuid)
-VALUES ('Demo Location', 'Testing location', 1, '2018-07-02 00:00:00', UUID());
+VALUES ('Demo 1', 'Location for OpenMRS instance 1', 1, '2018-07-02 00:00:00', UUID());
+
+INSERT INTO location(name, description, creator, date_created, uuid)
+VALUES ('Demo 2', 'Location for OpenMRS instance 2', 1, '2018-07-02 00:00:00', UUID());
 
 INSERT INTO location_attribute(location_id, attribute_type_id, value_reference, creator, date_created, uuid)
 VALUES
-  (@LOCATION_ID, @CODE_ATTRIB_TYPE_ID, 'DEMO', 1, '2018-07-02 00:00:00', UUID()),
-  (@LOCATION_ID, @EXT_ID_ATTRIB_TYPE_ID, 'DEMO^^^&2.16.840.1.113883.3.7194.1.100&ISO', 1, '2018-07-02 00:00:00', UUID());
+  (@LOCATION_ID_1, @CODE_ATTRIB_TYPE_ID, 'DEMO1', 1, '2018-07-02 00:00:00', UUID()),
+  (@LOCATION_ID_1, @EXT_ID_ATTRIB_TYPE_ID, 'DEMO1^^^&2.16.840.1.113883.3.7194.1.101&ISO', 1, '2018-07-02 00:00:00', UUID()),
+  (@LOCATION_ID_2, @CODE_ATTRIB_TYPE_ID, 'DEMO2', 1, '2018-07-02 00:00:00', UUID()),
+  (@LOCATION_ID_2, @EXT_ID_ATTRIB_TYPE_ID, 'DEMO2^^^&2.16.840.1.113883.3.7194.1.102&ISO', 1, '2018-07-02 00:00:00', UUID());
 
 UPDATE global_property
 SET property_value = 'http://openshr-openxds:8010/axis2/services/xdsregistryb'

@@ -95,7 +95,7 @@ COPY public.trackedentitytype (trackedentitytypeid, uid, code, created, lastupda
 --
 
 COPY public.program (programid, uid, code, created, lastupdated, lastupdatedby, name, shortname, description, formname, version, enrollmentdatelabel, incidentdatelabel, type, displayincidentdate, onlyenrollonce, skipoffline, displayfrontpagelist, usefirststageduringregistration, capturecoordinates, expirydays, completeeventsexpirydays, minattributesrequiredtosearch, maxteicounttoreturn, style, expiryperiodtypeid, ignoreoverdueevents, selectenrollmentdatesinfuture, selectincidentdatesinfuture, relationshiptext, relationshiptypeid, relationshipfroma, relatedprogramid, categorycomboid, trackedentitytypeid, dataentryformid, workflowid, userid, publicaccess) FROM stdin;
-66	llkudzlGDK0	HIV_PR	2018-07-02 13:49:43.109	2018-07-05 16:46:27.077	58	HIV surveillance Program	HIV program	\N	\N	12	\N	\N	WITH_REGISTRATION	t	f	f	t	f	f	0	0	1	0	\N	\N	f	f	f	\N	\N	f	\N	19	63	\N	\N	58	rw------
+66	llkudzlGDK0	HIV_PR	2018-07-02 13:49:43.109	2018-07-20 14:23:19.19	58	HIV surveillance Program	HIV program	\N	\N	13	\N	\N	WITH_REGISTRATION	t	f	f	t	f	f	0	0	1	0	\N	\N	f	f	f	\N	\N	f	\N	19	63	\N	\N	58	rw------
 \.
 
 
@@ -201,7 +201,7 @@ COPY public.attributevalue (attributevalueid, created, lastupdated, value, attri
 --
 
 COPY public.dataelementcategory (categoryid, uid, code, created, lastupdated, lastupdatedby, name, datadimensiontype, datadimension, userid, publicaccess) FROM stdin;
-18	GLevLNI9wkl	default	2018-06-29 20:56:06.581	2018-07-05 16:20:31.724	\N	default	DISAGGREGATION	f	\N	--------
+18	GLevLNI9wkl	default	2018-06-29 20:56:06.581	2018-07-20 14:49:08.295	\N	default	DISAGGREGATION	f	\N	--------
 \.
 
 
@@ -303,7 +303,9 @@ COPY public.categorydimension_items (categorydimensionid, sort_order, categoryop
 --
 
 COPY public.organisationunit (organisationunitid, uid, code, created, lastupdated, lastupdatedby, name, shortname, parentid, path, hierarchylevel, description, openingdate, closeddate, comment, featuretype, coordinates, url, contactperson, address, email, phonenumber, userid) FROM stdin;
-68	dA5jazHCi4Y	DEMO	2018-07-02 13:53:14.001	2018-07-02 14:35:42.531	58	Demo Location	Demo	\N	/dA5jazHCi4Y	1	\N	2018-07-01	\N	\N	NONE	\N	\N	\N	\N	\N	\N	58
+68	dA5jazHCi4Y	OPENCBR	2018-07-02 13:53:14.001	2018-07-20 14:21:47.735	58	OpenCBR	CBR	\N	/dA5jazHCi4Y	1	\N	2018-07-01	\N	\N	NONE	\N	\N	\N	\N	\N	\N	58
+132	clQG5FJhsZd	DEMO1	2018-07-20 14:22:31.464	2018-07-20 14:22:31.503	58	Demo Instance 1	Demo 1	68	/dA5jazHCi4Y/clQG5FJhsZd	2	\N	2018-07-01	\N	\N	NONE	\N	\N	\N	\N	\N	\N	58
+133	MHb5fvTPCEt	DEMO2	2018-07-20 14:22:54.314	2018-07-20 14:22:54.34	58	Demo Instance 2	Demo 2	68	/dA5jazHCi4Y/MHb5fvTPCEt	2	\N	2018-07-01	\N	\N	NONE	\N	\N	\N	\N	\N	\N	58
 \.
 
 
@@ -1777,7 +1779,7 @@ COPY public.externalnotificationlogentry (externalnotificationlogentryid, uid, c
 -- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: dhis
 --
 
-SELECT pg_catalog.setval('public.hibernate_sequence', 129, true);
+SELECT pg_catalog.setval('public.hibernate_sequence', 140, true);
 
 
 --
@@ -2005,12 +2007,12 @@ COPY public.interpretationusergroupaccesses (interpretationid, usergroupaccessid
 --
 
 COPY public.jobconfiguration (jobconfigurationid, uid, code, created, lastupdated, lastupdatedby, name, cronexpression, jobtype, jobstatus, lastexecutedstatus, lastexecuted, lastruntimeexecution, nextexecutiontime, continuousexecution, enabled, jobparameters) FROM stdin;
-55	AgcyU40A34b	\N	2018-06-29 20:56:15.914	2018-07-05 16:20:41.215	\N	Remove expired reserved values	0 0 * ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074001e52454d4f56455f455850495245445f52455345525645445f56414c554553	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d00000000000000001200007870740009434f4d504c45544544	2018-07-02 16:00:00.022	00:00:00.017	2018-07-05 17:00:00	f	t	\N
-50	AJy0NFWzpsg	\N	2018-06-29 20:56:15.844	2018-07-05 16:20:41.239	\N	File resource clean up	0 0 2 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074001546494c455f5245534f555243455f434c45414e5550	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-06 02:00:00	f	t	\N
-51	VzQuM48wsrY	\N	2018-06-29 20:56:15.878	2018-07-05 16:20:41.249	\N	Data statistics	0 0 2 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074000f444154415f53544154495354494353	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-06 02:00:00	f	t	\N
-52	K4IH1MugfAJ	\N	2018-06-29 20:56:15.884	2018-07-05 16:20:41.263	\N	Validation result notification	0 0 7 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074001f56414c49444154494f4e5f524553554c54535f4e4f54494649434154494f4e	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-06 07:00:00	f	t	\N
-53	VvfquY4MC20	\N	2018-06-29 20:56:15.892	2018-07-05 16:20:41.281	\N	Credentials expiry alert	0 0 2 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074001843524544454e5449414c535f4558504952595f414c455254	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-06 02:00:00	f	t	\N
-54	cpJMitrPuWZ	\N	2018-06-29 20:56:15.901	2018-07-05 16:20:41.293	\N	Dataset notification	0 0 2 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d00000000000000001200007870740015444154415f5345545f4e4f54494649434154494f4e	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-06 02:00:00	f	t	\N
+55	AgcyU40A34b	\N	2018-06-29 20:56:15.914	2018-07-20 14:49:17.13	\N	Remove expired reserved values	0 0 * ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074001e52454d4f56455f455850495245445f52455345525645445f56414c554553	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d00000000000000001200007870740009434f4d504c45544544	2018-07-02 16:00:00.022	00:00:00.017	2018-07-20 15:00:00	f	t	\N
+50	AJy0NFWzpsg	\N	2018-06-29 20:56:15.844	2018-07-20 14:49:17.148	\N	File resource clean up	0 0 2 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074001546494c455f5245534f555243455f434c45414e5550	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-21 02:00:00	f	t	\N
+51	VzQuM48wsrY	\N	2018-06-29 20:56:15.878	2018-07-20 14:49:17.159	\N	Data statistics	0 0 2 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074000f444154415f53544154495354494353	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-21 02:00:00	f	t	\N
+52	K4IH1MugfAJ	\N	2018-06-29 20:56:15.884	2018-07-20 14:49:17.17	\N	Validation result notification	0 0 7 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074001f56414c49444154494f4e5f524553554c54535f4e4f54494649434154494f4e	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-21 07:00:00	f	t	\N
+53	VvfquY4MC20	\N	2018-06-29 20:56:15.892	2018-07-20 14:49:17.185	\N	Credentials expiry alert	0 0 2 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074001843524544454e5449414c535f4558504952595f414c455254	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-21 02:00:00	f	t	\N
+54	cpJMitrPuWZ	\N	2018-06-29 20:56:15.901	2018-07-20 14:49:17.198	\N	Dataset notification	0 0 2 ? * *	\\xaced00057e7200206f72672e686973702e646869732e7363686564756c696e672e4a6f625479706500000000000000001200007872000e6a6176612e6c616e672e456e756d00000000000000001200007870740015444154415f5345545f4e4f54494649434154494f4e	\\xaced00057e7200226f72672e686973702e646869732e7363686564756c696e672e4a6f6253746174757300000000000000001200007872000e6a6176612e6c616e672e456e756d000000000000000012000078707400095343484544554c4544	\N	\N	\N	2018-07-21 02:00:00	f	t	\N
 \.
 
 
@@ -2189,6 +2191,7 @@ COPY public.mapviewtranslations (mapviewid, objecttranslationid) FROM stdin;
 COPY public.message (messageid, uid, created, lastupdated, messagetext, internal, metadata, userid) FROM stdin;
 57	wi49hcy22p5	2018-07-02 13:41:52.581	2018-07-02 13:41:52.581	Scheduler startup\n\nSystem title: DHIS 2\nBase URL: null\nTime: 2018-07-02T13:41:52.560Z\nMessage: Scheduler started with one or more unexecuted jobs:\nJob [AgcyU40A34b, Remove expired reserved values] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-06-29 22:00:00.0\n\n\nCause: 	f	\N	\N
 107	LHnRNCb3ORN	2018-07-05 16:20:41.333	2018-07-05 16:20:41.333	Scheduler startup\n\nSystem title: DHIS 2\nBase URL: null\nTime: 2018-07-05T16:20:41.311Z\nMessage: Scheduler started with one or more unexecuted jobs:\nJob [AgcyU40A34b, Remove expired reserved values] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-02 17:00:00.0\nJob [AJy0NFWzpsg, File resource clean up] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-03 02:00:00.0\nJob [VzQuM48wsrY, Data statistics] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-03 02:00:00.0\nJob [K4IH1MugfAJ, Validation result notification] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-03 07:00:00.0\nJob [VvfquY4MC20, Credentials expiry alert] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-03 02:00:00.0\nJob [cpJMitrPuWZ, Dataset notification] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-03 02:00:00.0\n\n\nCause: 	f	\N	\N
+131	ojyU2SGW6gj	2018-07-20 14:13:49.258	2018-07-20 14:13:49.258	Scheduler startup\n\nSystem title: DHIS 2\nBase URL: null\nTime: 2018-07-20T14:13:49.231Z\nMessage: Scheduler started with one or more unexecuted jobs:\nJob [AgcyU40A34b, Remove expired reserved values] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-05 17:00:00.0\nJob [AJy0NFWzpsg, File resource clean up] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-06 02:00:00.0\nJob [VzQuM48wsrY, Data statistics] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-06 02:00:00.0\nJob [K4IH1MugfAJ, Validation result notification] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-06 07:00:00.0\nJob [VvfquY4MC20, Credentials expiry alert] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-06 02:00:00.0\nJob [cpJMitrPuWZ, Dataset notification] has status failed or was scheduled in server downtime. Actual execution time was supposed to be: 2018-07-06 02:00:00.0\n\n\nCause: 	f	\N	\N
 \.
 
 
@@ -2199,6 +2202,7 @@ COPY public.message (messageid, uid, created, lastupdated, messagetext, internal
 COPY public.messageconversation (messageconversationid, uid, messagecount, created, lastupdated, subject, messagetype, priority, status, user_assigned, lastsenderid, lastmessage, userid) FROM stdin;
 56	wCeBbYOLYnf	1	2018-07-02 13:41:52.592	2018-07-02 13:41:52.592	Scheduler startup	SYSTEM	NONE	NONE	\N	\N	2018-07-02 13:41:52.58	\N
 106	UHEy8OQK8aH	1	2018-07-05 16:20:41.351	2018-07-05 16:20:41.351	Scheduler startup	SYSTEM	NONE	NONE	\N	\N	2018-07-05 16:20:41.333	\N
+130	CrJFPRMPPPY	1	2018-07-20 14:13:49.275	2018-07-20 14:13:49.276	Scheduler startup	SYSTEM	NONE	NONE	\N	\N	2018-07-20 14:13:49.258	\N
 \.
 
 
@@ -2209,6 +2213,7 @@ COPY public.messageconversation (messageconversationid, uid, messagecount, creat
 COPY public.messageconversation_messages (messageconversationid, sort_order, messageid) FROM stdin;
 56	1	57
 106	1	107
+130	1	131
 \.
 
 
@@ -2595,7 +2600,7 @@ COPY public.predictororgunitlevels (predictorid, orgunitlevelid) FROM stdin;
 --
 
 COPY public.users (userid, uid, code, created, lastupdated, lastupdatedby, creatoruserid, username, password, externalauth, openid, ldapid, passwordlastupdated, lastlogin, restoretoken, restorecode, restoreexpiry, selfregistered, invitation, disabled) FROM stdin;
-58	KvMx6c1eoYo	admin	2018-07-02 13:42:57.823	2018-07-05 16:24:20.476	\N	58	admin	$2a$10$kFelHlkI8tmrRglFfdI62.yNnX4fuv2FAJrTRqjRK1v163YPqpz.G	f	\N	\N	2018-07-02 13:42:57.826	2018-07-05 16:24:20.475	\N	\N	\N	f	f	f
+58	KvMx6c1eoYo	admin	2018-07-02 13:42:57.823	2018-07-20 14:19:30.767	\N	58	admin	$2a$10$kFelHlkI8tmrRglFfdI62.yNnX4fuv2FAJrTRqjRK1v163YPqpz.G	f	\N	\N	2018-07-02 13:42:57.826	2018-07-20 14:19:30.766	\N	\N	\N	f	f	f
 \.
 
 
@@ -2621,13 +2626,13 @@ COPY public.program_attribute_group (programtrackedentityattributegroupid, uid, 
 --
 
 COPY public.program_attributes (programtrackedentityattributeid, uid, code, created, lastupdated, lastupdatedby, programid, trackedentityattributeid, displayinlist, mandatory, sort_order, allowfuturedate, renderoptionsasradio, rendertype, searchable) FROM stdin;
-123	yYbKOTCQYu8	\N	2018-07-02 14:06:00.586	2018-07-05 16:46:27.089	\N	66	61	t	f	1	f	f	\N	t
-124	zfhWc8KAZXq	\N	2018-07-02 14:06:00.586	2018-07-05 16:46:27.09	\N	66	62	t	f	2	f	f	\N	t
-125	wBdnvmu5798	\N	2018-07-05 16:45:43.342	2018-07-05 16:46:27.091	\N	66	108	f	f	3	\N	f	\N	f
-126	p7L9rQeavAp	\N	2018-07-02 15:09:19.898	2018-07-05 16:46:27.091	\N	66	90	f	f	4	f	f	\N	f
-127	hW9XPwfLixV	\N	2018-07-02 15:09:19.898	2018-07-05 16:46:27.092	\N	66	85	t	f	5	f	f	\N	f
-128	I23E68EQ7mo	\N	2018-07-02 15:09:19.898	2018-07-05 16:46:27.092	\N	66	89	t	f	6	f	f	\N	f
-129	Uf6kkNxVkUv	\N	2018-07-02 15:09:19.898	2018-07-05 16:46:27.092	\N	66	93	t	f	7	f	f	\N	f
+134	yYbKOTCQYu8	\N	2018-07-02 14:06:00.586	2018-07-20 14:23:19.197	\N	66	61	t	f	1	f	f	\N	t
+135	zfhWc8KAZXq	\N	2018-07-02 14:06:00.586	2018-07-20 14:23:19.198	\N	66	62	t	f	2	f	f	\N	t
+136	wBdnvmu5798	\N	2018-07-05 16:45:43.342	2018-07-20 14:23:19.199	\N	66	108	f	f	3	f	f	\N	f
+137	p7L9rQeavAp	\N	2018-07-02 15:09:19.898	2018-07-20 14:23:19.201	\N	66	90	f	f	4	f	f	\N	f
+138	hW9XPwfLixV	\N	2018-07-02 15:09:19.898	2018-07-20 14:23:19.204	\N	66	85	t	f	5	f	f	\N	f
+139	I23E68EQ7mo	\N	2018-07-02 15:09:19.898	2018-07-20 14:23:19.207	\N	66	89	t	f	6	f	f	\N	f
+140	Uf6kkNxVkUv	\N	2018-07-02 15:09:19.898	2018-07-20 14:23:19.208	\N	66	93	t	f	7	f	f	\N	f
 \.
 
 
@@ -2653,6 +2658,8 @@ COPY public.program_criteria (programid, validationcriteriaid) FROM stdin;
 
 COPY public.program_organisationunits (organisationunitid, programid) FROM stdin;
 68	66
+133	66
+132	66
 \.
 
 
@@ -3833,7 +3840,7 @@ COPY public.validationruleusergroupaccesses (validationruleid, usergroupaccessid
 --
 
 COPY public.version (versionid, versionkey, versionvalue) FROM stdin;
-67	organisationUnit	0d7b8c79-9d22-470b-b1ed-f088720a9499
+67	organisationUnit	5ca4659f-16bc-4e01-be2a-f12ec817390d
 \.
 
 

@@ -44,7 +44,7 @@ which would lead to loss of all data in the databases.
 docker stack rm cbr
 ```
 
-### Accessing the systems
+### Accessing the instances
 If you have installed the ecosystem on a remote machine, you will need to
 replace **localhost** in the URLs below with the IP address of the machine.
 If you plan to access the OpenHIM instance, you will need to edit the file

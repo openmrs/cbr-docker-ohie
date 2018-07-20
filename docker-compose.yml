@@ -96,6 +96,7 @@ services:
             - openempi/db.env
         volumes:
             - ./openempi/configure_db.sql:/usr/share/openempi/configure_db.sql
+            - ./openempi/mpi-config.xml:/usr/share/openempi/openempi-entity-3.4.0c/conf/mpi-config.xml
         ports:
             - "8082:8080"
             - "3600:3600"

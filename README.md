@@ -7,7 +7,7 @@ DHIS2, OpenHIM, OpenEMPI, OpenSHR and DHIS2 for case based surveillance.
 - Git
 
 #### Install Docker
-Install docker for your OS platform following the instructions
+Install docker for your platform following the instructions
 [here](https://docs.docker.com/install/#supported-platforms).
 
 #### Install git
@@ -36,7 +36,7 @@ docker stack deploy -c docker-compose.yml cbr
 ```
 
 
-#### Shutdown
+#### Shutdown (Resetting)
 From the commandline, navigate to the directory you just created above and
 execute the command below, note that the command resets all the systems
 which would lead to loss of all data in the databases.

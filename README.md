@@ -20,7 +20,7 @@ sudo apt-get install git
 ```
 
 ### Import the project
-Create a new directory where to import to the code, switch to the new directory and
+Create a new directory into which to clone the code, switch to the new directory and
 then run the command below to import the project
 
 ```

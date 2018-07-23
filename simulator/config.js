@@ -6,6 +6,7 @@ var config = {
             name: "OpenMRS Instance 1",
             baseUrl: "http://localhost:8080/openmrs",
             username: 'admin',
+            password: 'Admin123',
             patientIdentifierTypeUuid: '8d79403a-c2cc-11de-8d13-0010c6dffd0f'
         },
         {
@@ -13,6 +14,7 @@ var config = {
             name: "OpenMRS Instance 2",
             baseUrl: "http://localhost:8081/openmrs",
             username: 'admin',
+            password: 'Admin123',
             patientIdentifierTypeUuid: '8d79403a-c2cc-11de-8d13-0010c6dffd0f'
         }
     ]

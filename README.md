@@ -1,5 +1,5 @@
 # cbr-docker-ohie
-Dockerization of OpenHIM, OpenEMPI, OpenSHR, DHIS2 and 2 OpenMRS instances
+Dockerization of OpenHIM, OpenEMPI, OpenSHR, DHIS2, a simulator and 2 OpenMRS instances
 each hosting the case report module to demonstrate case based surveillance.
 
 ### Requirements
@@ -64,6 +64,8 @@ OpenSHR - http://localhost:8083/openmrs
 DHIS2 - http://localhost:8084
 
 OpenHIM - http://localhost
+
+Simulator - http://localhost:81
 
 ### Testing the ecosystem
 

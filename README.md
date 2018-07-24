@@ -2,9 +2,20 @@
 Dockerization of OpenHIM, OpenEMPI, OpenSHR, DHIS2, a simulator and 2 OpenMRS instances
 each hosting the case report module to demonstrate case based surveillance.
 
+> NOTE: **The images used for this demonstration are big** and use a lot of memory. Running the demonstration 
+> may involve downloading over 6 gigabytes of Docker images and running the full stack can consume 
+> 32 gigabytes of memory (though it can run with less memory). For this reason, consider running the 
+> demonstration in the cloud. For example, [DigitalOcean](https://www.digitalocean.com/) can spin up 
+> a large droplet (server) in a minute, provides a one-click with Docker pre-installed on Ubuntu, and 
+> only charges a modest fee. For example, in the following demonstration video, 
+> we spent 4¢ (USD $0.04) to run a 16-CPU 64 gigabyte server (much larger than necessary) for five minutes.
+
+[![Case Based Reporting OpenHIE Demo](http://img.youtube.com/vi/Gn71R9aRwgM/0.jpg)](http://www.youtube.com/watch?v=Gn71R9aRwgM)
+
 ### Requirements
 - Docker 17+
 - Git
+- At least 8GB of RAM available to Docker
 
 ### Install Docker
 Install docker for your platform following the instructions

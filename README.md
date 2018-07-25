@@ -10,6 +10,11 @@ each hosting the case report module to demonstrate case based surveillance.
 > only charges a modest fee. For example, in the following demonstration video, 
 > we spent 4¢ (USD $0.04) to run a 16-CPU 64 gigabyte server (much larger than necessary) for five minutes.
 
+> NOTE: **This demonstration assumes all containers are on a single host**. While Docker swarm, by 
+> design, allows you to run services across multiple nodes (servers), this demonstration defines 
+> containers that bind to files/folders on the host, meaning the services are not portable to other 
+> nodes (unless you made the effort to copy the source files to all nodes in your swarm).
+
 [![Case Based Reporting OpenHIE Demo](http://img.youtube.com/vi/Gn71R9aRwgM/0.jpg)](http://www.youtube.com/watch?v=Gn71R9aRwgM)
 
 ### Requirements

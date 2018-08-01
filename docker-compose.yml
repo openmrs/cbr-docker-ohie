@@ -166,6 +166,5 @@ services:
         image: wluyima/cbr-simulator
         volumes:
             - ./simulator/config.js:/usr/share/nginx/html/config/config.js
-            - ./simulator/simulator-dataset-short.js:/usr/share/nginx/html/data/simulator-dataset.js
         ports:
             - "81:80"

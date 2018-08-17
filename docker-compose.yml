@@ -12,6 +12,7 @@ services:
         volumes:
             - ./opencbr/openmrs_db.sql:/docker-entrypoint-initdb.d/openmrs_db.sql
             - ./opencbr/openmrs_db_config-1.sql:/docker-entrypoint-initdb.d/openmrs_db_config.sql
+            - ./opencbr/openmrs_db_config_common.sql:/docker-entrypoint-initdb.d/openmrs_db_config_common.sql
 
     opencbr-openmrs-1:
         image: tomcat:7-jre7-alpine
@@ -33,6 +34,7 @@ services:
         volumes:
             - ./opencbr/openmrs_db.sql:/docker-entrypoint-initdb.d/openmrs_db.sql
             - ./opencbr/openmrs_db_config-2.sql:/docker-entrypoint-initdb.d/openmrs_db_config.sql
+            - ./opencbr/openmrs_db_config_common.sql:/docker-entrypoint-initdb.d/openmrs_db_config_common.sql
 
     opencbr-openmrs-2:
         image: tomcat:7-jre7-alpine

@@ -114,6 +114,18 @@ var dataset = {
             "event": "cd4Count",
             "identifier": "7WU9G",
             "value": "1546"
+        },
+        {
+            "date": -5000,
+            "event": "hivTest",
+            "identifier": "7WU9G",
+            "value": "-ve"
+        },
+        {
+            "date": -4500,
+            "event": "hivTest",
+            "identifier": "7WU9G",
+            "value": "+ve"
         }
     ]
 }

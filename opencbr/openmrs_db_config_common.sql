@@ -9,6 +9,6 @@ UPDATE scheduler_task_config SET repeat_interval = 11 WHERE name = 'New HIV Trea
 
 UPDATE scheduler_task_config SET repeat_interval = 14 WHERE name = 'HIV Treatment Failure';
 
-UPDATE scheduler_task_config SET repeat_interval = 17 WHERE name IN = 'HIV Treatment Stopped';
+UPDATE scheduler_task_config SET repeat_interval = 17 WHERE name = 'HIV Treatment Stopped';
 
-UPDATE scheduler_task_config SET repeat_interval = 20 WHERE name IN = 'HIV Patient Died';
+UPDATE scheduler_task_config SET repeat_interval = 20 WHERE name = 'HIV Patient Died';

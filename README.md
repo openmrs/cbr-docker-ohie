@@ -63,11 +63,16 @@ docker stack rm cbr
 ### Accessing the instances
 If you have installed the ecosystem on a remote machine, you will need to
 replace **localhost** in the URLs below with the IP address of the machine.
+
 If you plan to access the OpenHIM instance, you will need to edit the file
 named **console-config.json** inside the **openhim** folder and set the
 value of the **host** field to the IP address of the remote machine.
 
-Below are URLs to visit to access each instance,
+If you have installed the ecosystem on a remote machine, to use the simulator, 
+you will need to update the URLs in the file located at **simulator/config.js** and 
+replace localhost with the IP address of the machine.
+
+Below are URLs to visit to access each instance:
 
 OpenMRS Instance 1 - http://localhost:8080/openmrs
 

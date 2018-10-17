@@ -59,7 +59,7 @@ services:
             driver: none
 
     openhim-core:
-        image: wluyima/openhim-core
+        image: openmrs/openhim-core
         env_file:
             - openhim/db.env
         volumes:
@@ -93,7 +93,7 @@ services:
             - openempi/db.env
 
     openempi:
-        image: wluyima/openempi
+        image: openmrs/openempi
         env_file:
             - openempi/db.env
         volumes:
@@ -165,7 +165,7 @@ services:
 
     #==================== Simulator ==================
     simulator:
-        image: wluyima/cbr-simulator
+        image: openmrs/cbr-simulator
         volumes:
             - ./simulator/config.js:/usr/share/nginx/html/config/config.js
             - ./simulator/simulator-dataset-short.js:/usr/share/nginx/html/data/simulator-dataset.js
